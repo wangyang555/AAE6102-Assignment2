@@ -316,16 +316,13 @@ The proliferation of low Earth orbit (LEO) satellite constellations, such as Spa
 
 ## 4.2. Challenges in LEO-Based Navigation
 
-### 4.2.1. Ephemeris Errors and Orbital Uncertainty  
+- **Ephemeris Errors and Orbital Uncertainty**
    LEO satellites are not designed for navigation, and their precise orbital data (ephemerides) are not broadcast to users. Instead, publicly available two-line element (TLE) files from NORAD provide approximate Keplerian elements. These files, updated daily, suffer from kilometer-level inaccuracies due to perturbations like atmospheric drag and solar radiation. For example, SGP4 orbit propagators introduce errors up to 3 km. Such uncertainties degrade positioning accuracy, as pseudorange and Doppler measurements rely heavily on precise satellite positions.
-
-### 4.2.2. Clock Synchronization and Stability
+- **Clock Synchronization and Stability**
    Unlike GNSS satellites equipped with atomic clocks, LEO satellites often use less stable oscillators (e.g., oven-controlled crystal oscillators). Clock biases and drifts remain unaccounted for, as LEO signals do not transmit clock corrections. Experimental results show that mismatched clock dynamics between receivers and satellites introduce Doppler ambiguities, leading to errors exceeding 30 meters in standalone positioning.
-
-### 4.2.3. Signal Structure and Proprietary Protocols
+- **Signal Structure and Proprietary Protocols**
    LEO signals employ proprietary modulation schemes optimized for communication, not navigation. Extracting timing or phase data requires reverse-engineering unknown waveforms. For instance, Starlink’s downlink signals exhibit multiple carrier peaks, complicating carrier phase tracking. Non-subscribers lack access to synchronization codes, forcing reliance on opportunistic methods like matched subspace detectors.
-
-### 4.2.4. Atmospheric and Environmental Effects
+- **Atmospheric and Environmental Effects**
    While LEO signals benefit from shorter path lengths (30 dB stronger than GNSS), higher carrier frequencies (Ku/Ka bands) suffer greater atmospheric attenuation. Ionospheric delays, though less severe than at GNSS L-band frequencies, still introduce errors, particularly for VHF signals from constellations like Orbcomm.
 
 ## 4.3. Comparison with GNSS: Accuracy, Reliability, and Availability
@@ -338,16 +335,16 @@ The proliferation of low Earth orbit (LEO) satellite constellations, such as Spa
 
 ## 4.4. Solutions and Advancements
 
-### 4.4.1. Simultaneous Tracking and Navigation (STAN)
+- **Simultaneous Tracking and Navigation (STAN)**
    The STAN framework uses extended Kalman filters to simultaneously estimate receiver and satellite states. By integrating inertial measurements and pseudorange/Doppler observables, STAN achieves meter-level accuracy in GNSS-denied environments. Experimental results show a 21.6 m RMSE for ground vehicles using Starlink and Orbcomm signals.
 
-### 4.4.2. Differential and Hybrid Approaches
+- **Differential and Hybrid Approaches**
    Differential Doppler positioning mitigates ephemeris and clock errors by comparing measurements between a base station and rover. This method reduced 3D errors from 33.4 m to 5.6 m in experiments. Hybrid systems combining LEO signals with GNSS, 5G, or inertial sensors further enhance robustness.
 
-### 4.4.3. Software-Defined Radios (SDRs) and Machine Learning
+- **Software-Defined Radios (SDRs) and Machine Learning**
    SDRs enable flexible signal processing for unknown waveforms. For example, adaptive Kalman filters track carrier phases in Starlink signals despite Doppler ambiguities. Machine learning could exploit beamforming patterns or hardware fingerprints for localization, as proposed for massive MIMO-enabled LEO systems.
 
-### 4.4.4. Collaboration with Satellite Operators
+- **Collaboration with Satellite Operators**
    Future LEO constellations could embed navigation-specific signals or share precise ephemerides. Hosting GNSS transceivers on LEO satellites would improve synchronization and atmospheric correction.
 
 ## 4.5. Conclusion
