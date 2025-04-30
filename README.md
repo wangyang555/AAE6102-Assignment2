@@ -124,6 +124,8 @@ DGNSS, RTK, PPP, and PPP-RTK each offer distinct trade-offs in accuracy, infrast
 
 In urban environments, GNSS positioning faces significant challenges primarily due to signal blockage, multipath effects, and poor satellite visibility. The goal of this task is to utilize the provided skymask data to enhance GNSS positioning performance in urban settings. The skymask provides elevation angle information for potential satellite visibility blockage corresponding to each azimuth angle. First, we plotted the Skymask polar chart, which illustrates satellite visibility blockage at different azimuth angles, helping us visually understand which directions might obstruct satellite signals in urban environments.
 
+![Diagram of the system](figure/task2-Skymask-Urban/skymask.png)
+
 ## 2.1. Data Processing
 
 The data processing is divided into three main parts:
