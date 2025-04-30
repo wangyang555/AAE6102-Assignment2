@@ -1,3 +1,12 @@
+# Satellite Communication and Navigation Assignment-2 (AAE6102)
+
+**Name:** WANG Yang  
+**Email:** 24041885r@connect.polyu.hk  
+
+This repository contains the implementation of Assignment 2 for AAE6102 Satellite Communication and Navigation. The assignment consists of 5 tasks. Feedback and discussions are welcome!
+
+---
+
 # 1. Comparison of GNSS Positioning Techniques: DGNSS, RTK, PPP, and PPP-RTK
 
 > **Model:** Deepseek
