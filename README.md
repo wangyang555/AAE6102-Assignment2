@@ -318,10 +318,13 @@ The proliferation of low Earth orbit (LEO) satellite constellations, such as Spa
 
 - **Ephemeris Errors and Orbital Uncertainty**
    LEO satellites are not designed for navigation, and their precise orbital data (ephemerides) are not broadcast to users. Instead, publicly available two-line element (TLE) files from NORAD provide approximate Keplerian elements. These files, updated daily, suffer from kilometer-level inaccuracies due to perturbations like atmospheric drag and solar radiation. For example, SGP4 orbit propagators introduce errors up to 3 km. Such uncertainties degrade positioning accuracy, as pseudorange and Doppler measurements rely heavily on precise satellite positions.
+  
 - **Clock Synchronization and Stability**
    Unlike GNSS satellites equipped with atomic clocks, LEO satellites often use less stable oscillators (e.g., oven-controlled crystal oscillators). Clock biases and drifts remain unaccounted for, as LEO signals do not transmit clock corrections. Experimental results show that mismatched clock dynamics between receivers and satellites introduce Doppler ambiguities, leading to errors exceeding 30 meters in standalone positioning.
+  
 - **Signal Structure and Proprietary Protocols**
    LEO signals employ proprietary modulation schemes optimized for communication, not navigation. Extracting timing or phase data requires reverse-engineering unknown waveforms. For instance, Starlink’s downlink signals exhibit multiple carrier peaks, complicating carrier phase tracking. Non-subscribers lack access to synchronization codes, forcing reliance on opportunistic methods like matched subspace detectors.
+  
 - **Atmospheric and Environmental Effects**
    While LEO signals benefit from shorter path lengths (30 dB stronger than GNSS), higher carrier frequencies (Ku/Ka bands) suffer greater atmospheric attenuation. Ionospheric delays, though less severe than at GNSS L-band frequencies, still introduce errors, particularly for VHF signals from constellations like Orbcomm.
 
