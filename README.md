@@ -4,6 +4,7 @@
 **Email:** 24041885r@connect.polyu.hk  
 
 This repository contains the implementation of Assignment 2 for AAE6102 Satellite Communication and Navigation. The assignment consists of 5 tasks. Feedback and discussions are welcome!
+If you can't see the figures in readme.md, please see the readme.pdf.
 
 ---
 
