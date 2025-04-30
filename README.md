@@ -249,7 +249,7 @@ Satellite G08 was excluded in RAIM detection. As shown in the figure, G08's elev
 
 <div align="center">
     
-![Urban Skymask](figure/task3-RAIM-Opensky/satellite_el.png)
+![satellite elevations](figure/task3-RAIM-Opensky/satellite_el.png)
 
 </div>
 
@@ -258,7 +258,7 @@ Tight clustering of points indicates effective outlier rejection, stabilizing th
 
 <div align="center">
     
-![Urban Skymask](figure/task3-RAIM-Opensky/raim_lat_lon.png)
+![Positioning Results (Latitude, Longitude)](figure/task3-RAIM-Opensky/raim_lat_lon.png)
 
 </div>
 
@@ -267,7 +267,7 @@ Using the mean of the positioning results in XYZ as a reference, calculate the N
 
 <div align="center">
     
-![Urban Skymask](figure/task3-RAIM-Opensky/raim_neu.png)
+![Positioning Results (NEU)](figure/task3-RAIM-Opensky/raim_neu.png)
 
 </div>
 
@@ -285,7 +285,7 @@ Using the mean of the positioning results in XYZ as a reference, calculate the N
 
 <div align="center">
     
-![Urban Skymask](figure/task3-RAIM-Opensky/Stanford_chart.png)
+![Stanford Chart](figure/task3-RAIM-Opensky/Stanford_chart.png)
 
 </div>
 
