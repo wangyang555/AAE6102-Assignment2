@@ -239,11 +239,29 @@ Calculated using a similar method as VPL.
 ### 3.2.1. Satellite Elevation Analysis
 Satellite G08 was excluded in RAIM detection. As shown in the figure, G08's elevation angle is less than 15°, indicating larger errors in low-elevation observations, which significantly affect positioning results. High-elevation satellites dominate the solution, reducing susceptibility to atmospheric errors and multipath.
 
+<div align="center">
+    
+![Urban Skymask](figure/task3-RAIM-Opensky/satellite_el.png)
+
+</div>
+
 ### 3.2.2. Latitude/Longitude Positioning
 Tight clustering of points indicates effective outlier rejection, stabilizing the solution.
 
+<div align="center">
+    
+![Urban Skymask](figure/task3-RAIM-Opensky/raim_lat_lon.png)
+
+</div>
+
 ### 3.2.3. NEU Coordinate Analysis
 Using the mean of the positioning results in XYZ as a reference, calculate the NEU results.
+
+<div align="center">
+    
+![Urban Skymask](figure/task3-RAIM-Opensky/raim_neu.png)
+
+</div>
 
 ### Error Distribution
 - **North (N):** Fluctuates between 0 and -20m.
@@ -256,6 +274,12 @@ Using the mean of the positioning results in XYZ as a reference, calculate the N
 - **Normal Operation:** 100% (833 epochs), confirming all solutions met integrity requirements.
 - **Hazardous Misleading Information (HMI):** 0%, validating RAIM’s ability to exclude faults.
 - **3D Protection Level:** Computed PL < 50m AL, ensuring safety-critical applications.
+
+<div align="center">
+    
+![Urban Skymask](figure/task3-RAIM-Opensky/Stanford_chart.png)
+
+</div>
 
 ## References
 - Walter T, Enge P. Weighted RAIM for precision approach[C]//Proceedings of Ion GPS. Institute of Navigation, 1995, 8(1): 1995-2004.
