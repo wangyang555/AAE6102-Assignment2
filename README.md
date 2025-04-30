@@ -190,13 +190,13 @@ The satellite visibility chart shows the distribution of visible satellites at a
 
 <div align="center">
     
-![satellite position in Urban Skymask](./figure/task2-Skymask-Urban/sat_pos_skymask.png)
+![satellite position in Urban Skymask](figure/task2-Skymask-Urban/sat_pos_skymask.png)
 
 </div>
 
 <div align="center">
     
-![NEU result](./figure/task2-Skymask-Urban/NEU_result.png)
+![NEU result](figure/task2-Skymask-Urban/NEU_result.png)
 
 </div>
 
@@ -258,7 +258,7 @@ Satellite G08 was excluded in RAIM detection. As shown in the figure, G08's elev
 
 <div align="center">
     
-![satellite elevations](./figure/task3-RAIM-Opensky/satellite_el.png)
+![satellite elevations](figure/task3-RAIM-Opensky/satellite_el.png)
 
 </div>
 
@@ -267,16 +267,18 @@ Tight clustering of points indicates effective outlier rejection, stabilizing th
 
 <div align="center">
     
-![Positioning Results (Latitude, Longitude)](./figure/task3-RAIM-Opensky/raim_lat_lon.png)
+![Positioning Results (Latitude, Longitude)](figure/task3-RAIM-Opensky/raim_lat_lon.png)
 
 </div>
+
+
 
 ### 3.2.3. NEU Coordinate Analysis
 Using the mean of the positioning results in XYZ as a reference, calculate the NEU results.
 
 <div align="center">
     
-![Positioning Results (NEU)](./figure/task3-RAIM-Opensky/raim_neu.png)
+![Positioning Results (NEU)](figure/task3-RAIM-Opensky/raim_neu.png)
 
 </div>
 
@@ -294,7 +296,7 @@ Using the mean of the positioning results in XYZ as a reference, calculate the N
 
 <div align="center">
     
-![Stanford Chart](./figure/task3-RAIM-Opensky/Stanford_chart.png)
+![Stanford Chart](figure/task3-RAIM-Opensky/Stanford_chart.png)
 
 </div>
 
