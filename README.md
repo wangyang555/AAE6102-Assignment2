@@ -196,12 +196,6 @@ The satellite visibility chart shows the distribution of visible satellites at a
 
 <div align="center">
     
-![satellite position in Urban Skymask](https://github.com/wangyang555/AAE6102-Assignment2/blob/main/figure/task2-Skymask-Urban/sat_pos_skymask.png)
-
-</div>
-
-<div align="center">
-    
 ![NEU result](./figure/task2-Skymask-Urban/NEU_result.png)
 
 </div>
