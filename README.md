@@ -124,6 +124,7 @@ DGNSS, RTK, PPP, and PPP-RTK each offer distinct trade-offs in accuracy, infrast
 
 
 
+
 # 2.Improving GNSS Positioning in Urban Environments
 
 In urban environments, GNSS positioning faces significant challenges primarily due to signal blockage, multipath effects, and poor satellite visibility. The goal of this task is to utilize the provided skymask data to enhance GNSS positioning performance in urban settings. The skymask provides elevation angle information for potential satellite visibility blockage corresponding to each azimuth angle. First, we plotted the Skymask polar chart, which illustrates satellite visibility blockage at different azimuth angles, helping us visually understand which directions might obstruct satellite signals in urban environments.
@@ -194,44 +195,51 @@ Through the analysis and processing of skymask data, we can effectively identify
 
 
 
+
+---
+
+
+
+
+
 # 3. RAIM
-# 3.1. RAIM Algorithm
+## 3.1. RAIM Algorithm
 
-## 3.1.1 Data Collection and Weight Assignment
+### 3.1.1 Data Collection and Weight Assignment
 
-### (1) Data Collection
+**Data Collection:**
 Gather pseudorange measurements from multiple satellites (at least 5 satellites to support redundancy).
 
-### (2) Weight Assignment
+**Weight Assignment:**
 Assign weights to each satellite based on its elevation angle (weight matrix W), with lower weights for satellites at lower elevation angles.
 
-## 3.1.2. Weighted Position Solution
+### 3.1.2. Weighted Position Solution
 
-### (1) Linearized Model
+**Linearized Model:**
 Construct the measurement equation $y = Gx + \epsilon$, where $y$ is the pseudorange residual vector, $G$ is the design matrix, and $x$ is the position error vector.
 
-### (2) Weighted Least Squares Solution
+**Weighted Least Squares Solution:**
 Compute the position solution $x = (G^T WG)^{-1} G^T W \cdot y$.
 
-## 3.1.3. Residual and Test Statistic Calculation
+### 3.1.3. Residual and Test Statistic Calculation
 
-(1) **Residual Calculation:**  
+**Residual Calculation:**  
    $\epsilon = y - Gx = (I - P)y$, where $P = G(G^T WG)^{-1} G^T W$.
 
-(2) **Test Statistic (WSSE):**  
+**Test Statistic (WSSE):**  
    Calculate the weighted sum of squared errors $WSSE = \epsilon^T \epsilon$, where the square root $\sqrt{WSSE}$ is used for consistency checks.
 
-## 3.1.4. Threshold Setting and Fault Detection
+### 3.1.4. Threshold Setting and Fault Detection
 
 Set the threshold $T$ based on the alarm probability $P_{FA}$ and degrees of freedom $N-4$. If $\sqrt{WSSE} > T$, a fault is detected, triggering an alarm.
 
-## 3.1.5. Protection Levels Calculation
+### 3.1.5. Protection Levels Calculation
 
-### (1) Vertical Protection Level (VPL)
+**Vertical Protection Level (VPL):**
 $VPL = \max(Vslope) \cdot T + k(P_{MD}) \cdot \sigma_V$  
 where $Vslope$ is the sensitivity of satellite geometry to vertical error, and $k(P_{MD})$ is the standard deviation multiplier corresponding to the missed detection probability.
 
-### (2) Horizontal Protection Level (HPL)
+**Horizontal Protection Level (HPL):**
 Calculated using a similar method as VPL.
 
 ## 3.2. Results and Analysis
@@ -263,14 +271,14 @@ Using the mean of the positioning results in XYZ as a reference, calculate the N
 
 </div>
 
-### Error Distribution
+**Error Distribution:**
 - **North (N):** Fluctuates between 0 and -20m.
 - **East (E) and Up (U):** Similar range, showing consistent precision across axes.
 - **RAIM Contribution:** Suppressed outliers result in bounded errors, aligning with WLS weighting principles.
 
 ### 3.2.4. Integrity Monitoring
 
-### Performance Metrics
+**Performance Metrics:**
 - **Normal Operation:** 100% (833 epochs), confirming all solutions met integrity requirements.
 - **Hazardous Misleading Information (HMI):** 0%, validating RAIM’s ability to exclude faults.
 - **3D Protection Level:** Computed PL < 50m AL, ensuring safety-critical applications.
@@ -283,6 +291,13 @@ Using the mean of the positioning results in XYZ as a reference, calculate the N
 
 ## References
 - Walter T, Enge P. Weighted RAIM for precision approach[C]//Proceedings of Ion GPS. Institute of Navigation, 1995, 8(1): 1995-2004.
+
+
+
+---
+
+
+
 
 
 # 4. Navigating the Future: Challenges and Opportunities in LEO Satellite-Based Navigation Systems
@@ -301,16 +316,16 @@ The proliferation of low Earth orbit (LEO) satellite constellations, such as Spa
 
 ## 4.2. Challenges in LEO-Based Navigation
 
-4.2.1. **Ephemeris Errors and Orbital Uncertainty**  
+### 4.2.1. Ephemeris Errors and Orbital Uncertainty  
    LEO satellites are not designed for navigation, and their precise orbital data (ephemerides) are not broadcast to users. Instead, publicly available two-line element (TLE) files from NORAD provide approximate Keplerian elements. These files, updated daily, suffer from kilometer-level inaccuracies due to perturbations like atmospheric drag and solar radiation. For example, SGP4 orbit propagators introduce errors up to 3 km. Such uncertainties degrade positioning accuracy, as pseudorange and Doppler measurements rely heavily on precise satellite positions.
 
-4.2.2. **Clock Synchronization and Stability**  
+### 4.2.2. Clock Synchronization and Stability
    Unlike GNSS satellites equipped with atomic clocks, LEO satellites often use less stable oscillators (e.g., oven-controlled crystal oscillators). Clock biases and drifts remain unaccounted for, as LEO signals do not transmit clock corrections. Experimental results show that mismatched clock dynamics between receivers and satellites introduce Doppler ambiguities, leading to errors exceeding 30 meters in standalone positioning.
 
-4.2.3. **Signal Structure and Proprietary Protocols**  
+### 4.2.3. Signal Structure and Proprietary Protocols
    LEO signals employ proprietary modulation schemes optimized for communication, not navigation. Extracting timing or phase data requires reverse-engineering unknown waveforms. For instance, Starlink’s downlink signals exhibit multiple carrier peaks, complicating carrier phase tracking. Non-subscribers lack access to synchronization codes, forcing reliance on opportunistic methods like matched subspace detectors.
 
-4.2.4. **Atmospheric and Environmental Effects**  
+### 4.2.4. Atmospheric and Environmental Effects
    While LEO signals benefit from shorter path lengths (30 dB stronger than GNSS), higher carrier frequencies (Ku/Ka bands) suffer greater atmospheric attenuation. Ionospheric delays, though less severe than at GNSS L-band frequencies, still introduce errors, particularly for VHF signals from constellations like Orbcomm.
 
 ## 4.3. Comparison with GNSS: Accuracy, Reliability, and Availability
@@ -323,16 +338,16 @@ The proliferation of low Earth orbit (LEO) satellite constellations, such as Spa
 
 ## 4.4. Solutions and Advancements
 
-4.4.1. **Simultaneous Tracking and Navigation (STAN)**  
+### 4.4.1. Simultaneous Tracking and Navigation (STAN)
    The STAN framework uses extended Kalman filters to simultaneously estimate receiver and satellite states. By integrating inertial measurements and pseudorange/Doppler observables, STAN achieves meter-level accuracy in GNSS-denied environments. Experimental results show a 21.6 m RMSE for ground vehicles using Starlink and Orbcomm signals.
 
-4.4.2. **Differential and Hybrid Approaches**  
+### 4.4.2. Differential and Hybrid Approaches
    Differential Doppler positioning mitigates ephemeris and clock errors by comparing measurements between a base station and rover. This method reduced 3D errors from 33.4 m to 5.6 m in experiments. Hybrid systems combining LEO signals with GNSS, 5G, or inertial sensors further enhance robustness.
 
-4.4.3. **Software-Defined Radios (SDRs) and Machine Learning**  
+### 4.4.3. Software-Defined Radios (SDRs) and Machine Learning
    SDRs enable flexible signal processing for unknown waveforms. For example, adaptive Kalman filters track carrier phases in Starlink signals despite Doppler ambiguities. Machine learning could exploit beamforming patterns or hardware fingerprints for localization, as proposed for massive MIMO-enabled LEO systems.
 
-4.4.4. **Collaboration with Satellite Operators**  
+### 4.4.4. Collaboration with Satellite Operators
    Future LEO constellations could embed navigation-specific signals or share precise ephemerides. Hosting GNSS transceivers on LEO satellites would improve synchronization and atmospheric correction.
 
 ## 4.5. Conclusion
@@ -345,6 +360,13 @@ LEO satellites present a paradigm shift in PNT, offering resilience in GNSS-chal
 - Ferre R M, Lohan E S, Kuusniemi H, et al. Is LEO-based positioning with mega-constellations the answer for future equal access localization?[J]. IEEE Communications Magazine, 2022, 60(6): 40-46.
 - Kassas Z, Morales J, Khalife J. New-age satellite-based navigation--STAN: simultaneous tracking and navigation with LEO satellite signals[J]. Inside GNSS Magazine, 2019, 14(4): 56-65.
 - Khalife J J, Kassas Z M. Receiver design for Doppler positioning with LEO satellites[C]//ICASSP 2019-2019 IEEE International Conference on Acoustics, Speech and Signal Processing (ICASSP). IEEE, 2019: 5506-5510.
+
+
+
+
+---
+
+
 
 
 
@@ -366,13 +388,13 @@ Global Navigation Satellite System Radio Occultation (GNSS-RO) has emerged as a 
 
 GNSS-RO operates by analyzing the bending of radio signals transmitted by GNSS satellites (e.g., GPS, Galileo) as they pass through Earth’s atmosphere and are received by low Earth orbit (LEO) satellites. As signals traverse atmospheric layers, they experience refraction due to gradients in the refractive index, which depends on temperature, pressure, and humidity. By measuring the phase delay and bending angle of these signals, vertical profiles of atmospheric properties are derived.
 
-Key steps include:
+**Key steps include:**
 
-**Signal Acquisition:** GNSS satellites emit L-band signals intercepted by LEO satellites during occultation (rising or setting behind Earth’s limb).
+- **Signal Acquisition:** GNSS satellites emit L-band signals intercepted by LEO satellites during occultation (rising or setting behind Earth’s limb).
 
-**Bending Angle Calculation:** The degree of signal bending is computed using Doppler shift measurements.
+- **Bending Angle Calculation:** The degree of signal bending is computed using Doppler shift measurements.
 
-**Abel Transform:** This mathematical inversion converts bending angles into refractivity profiles, which are then used to derive temperature, pressure, and humidity.
+- **Abel Transform:** This mathematical inversion converts bending angles into refractivity profiles, which are then used to derive temperature, pressure, and humidity.
 
 The COSMIC-1 mission, launched in 2006, demonstrated this process using six LEO satellites, collecting over seven million profiles globally by 2019.
 
@@ -380,13 +402,13 @@ The COSMIC-1 mission, launched in 2006, demonstrated this process using six LEO 
 
 GNSS-RO offers distinct benefits compared to conventional techniques:
 
-**All-Weather Capability:** Unlike infrared or optical sensors, GNSS-RO penetrates clouds and precipitation, enabling continuous data collection.
+- **All-Weather Capability:** Unlike infrared or optical sensors, GNSS-RO penetrates clouds and precipitation, enabling continuous data collection.
 
-**High Vertical Resolution:** Profiles resolve atmospheric layers at 100–600 m intervals, critical for studying phenomena like gravity waves and tropopause dynamics.
+- **High Vertical Resolution:** Profiles resolve atmospheric layers at 100–600 m intervals, critical for studying phenomena like gravity waves and tropopause dynamics.
 
-**Self-Calibrating:** Relying on precise GNSS timing, it avoids instrument drift, ensuring long-term consistency—vital for climate studies.
+- **Self-Calibrating:** Relying on precise GNSS timing, it avoids instrument drift, ensuring long-term consistency—vital for climate studies.
 
-**Global Coverage:** Satellites provide uniform data across oceans, polar regions, and deserts, overcoming the spatial limitations of radiosondes.
+- **Global Coverage:** Satellites provide uniform data across oceans, polar regions, and deserts, overcoming the spatial limitations of radiosondes.
 
 ## 5.4. Contributions to Key Fields
 
@@ -422,13 +444,13 @@ GNSS-RO serves as a benchmark for climate variability:
 
 Despite its strengths, GNSS-RO faces hurdles:
 
-1. **Moist Lower Troposphere:** Signal attenuation and superrefraction cause biases in humidity retrievals, limiting accuracy near the surface.
+- **Moist Lower Troposphere:** Signal attenuation and superrefraction cause biases in humidity retrievals, limiting accuracy near the surface.
 
-2. **Ionospheric Interference:** Residual electron density effects complicate upper-stratospheric measurements, requiring advanced correction algorithms.
+- **Ionospheric Interference:** Residual electron density effects complicate upper-stratospheric measurements, requiring advanced correction algorithms.
 
-3. **Data Assimilation Complexity:** NWP systems must reconcile small-scale vertical structures with model resolution, necessitating tailored error statistics.
+- **Data Assimilation Complexity:** NWP systems must reconcile small-scale vertical structures with model resolution, necessitating tailored error statistics.
 
-4. **Satellite Longevity:** COSMIC-1’s declining operational satellites (from six to one by 2019) reduced daily profiles, highlighting dependency on sustained missions.
+- **Satellite Longevity:** COSMIC-1’s declining operational satellites (from six to one by 2019) reduced daily profiles, highlighting dependency on sustained missions.
 
 ## 5.6. Future Potential
 
